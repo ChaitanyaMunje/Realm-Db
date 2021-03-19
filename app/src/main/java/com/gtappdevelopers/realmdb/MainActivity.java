@@ -1,5 +1,6 @@
 package com.gtappdevelopers.realmdb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         readCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readData();
+                Intent i = new Intent(MainActivity.this,ReadCoursesActivity.class);
+                startActivity(i);
             }
         });
     }
