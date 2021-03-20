@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,ReadCoursesActivity.class);
                 startActivity(i);
+                finish();
             }
         });
     }
@@ -107,12 +108,5 @@ public class MainActivity extends AppCompatActivity {
                 realm.copyToRealm(modal);
             }
         });
-    }
-    private void readData(){
-        List<DataModal> dataModals = realm.where(DataModal.class).findAll();
-        for(int i=0; i<dataModals.size(); i++){
-            Log.e("TAG","DATA IS "+dataModals.get(i).getCourseName()+"\n"+dataModals.get(i).getCourseDescription()+dataModals.get(i).getCourseTracks()+dataModals.get(i).getCourseDuration());
-
-        }
     }
 }

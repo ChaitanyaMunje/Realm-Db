@@ -1,6 +1,7 @@
 package com.gtappdevelopers.realmdb;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHolder> {
@@ -38,6 +38,22 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         holder.courseDescTV.setText(modal.getCourseDescription());
         holder.courseDurationTV.setText(modal.getCourseDuration());
         holder.courseTracksTV.setText(modal.getCourseTracks());
+        //adding on click listnerfor item of recycler view.
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //on below line we are creating a new intent.
+                Intent i = new Intent(context, UpdateCourseActivity.class);
+                //on below line we are passing all the data to new activity.
+                i.putExtra("courseName", modal.getCourseName());
+                i.putExtra("courseDescription", modal.getCourseDescription());
+                i.putExtra("courseDuration", modal.getCourseDuration());
+                i.putExtra("courseTracks", modal.getCourseTracks());
+                i.putExtra("id", modal.getId());
+                //on below line we are starting a new activity.
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
